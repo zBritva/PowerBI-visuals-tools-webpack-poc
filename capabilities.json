@@ -1,0 +1,94 @@
+{
+    "dataRoles": [
+        {
+            "displayName": "Category Data",
+            "name": "category",
+            "kind": "Measure"
+        },
+        {
+            "displayName": "Measure Data",
+            "name": "measure",
+            "kind": "Measure"
+        },
+        {
+            "displayName": "Grouping & Measure",
+            "name": "categorymeasure",
+            "kind": "Measure"
+        }
+    ],
+    "objects": {
+        "dataPoint": {
+            "displayName": "Data colors",
+            "properties": {
+                "defaultColor": {
+                    "displayName": "Default color",
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "showAllDataPoints": {
+                    "displayName": "Show all",
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "fill": {
+                    "displayName": "Fill",
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "fillRule": {
+                    "displayName": "Color saturation",
+                    "type": {
+                        "fill": {}
+                    }
+                },
+                "fontSize": {
+                    "displayName": "Text Size",
+                    "type": {
+                        "formatting": {
+                            "fontSize": true
+                        }
+                    }
+                }
+            }
+        },
+        "general": {
+            "displayName": "General",
+            "properties": {
+                "passwordField": {
+                    "displayName": "Password",
+                    "type": {
+                        "text": true
+                    }
+                },
+                "passwordFieldHidden": {
+                    "displayName": "PasswordHidden",
+                    "type": {
+                        "text": true
+                    }
+                }
+            }
+        }
+    },
+    "dataViewMappings": [
+        {
+            "table": {
+                "rows": {
+                    "for": {
+                        "in": "measue"
+                    }
+                }
+            }
+        }
+    ]
+}
