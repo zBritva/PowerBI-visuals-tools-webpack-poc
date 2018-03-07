@@ -38,54 +38,25 @@ import DataView = powerbi.DataView;
 import EnumerateVisualObjectInstancesOptions = powerbi.EnumerateVisualObjectInstancesOptions;
 import VisualObjectInstanceEnumerationObject = powerbi.VisualObjectInstanceEnumerationObject;
 
-export default class SankeyDiagram implements IVisual {
+export default class VisualInInternalModule implements IVisual {
     private target: HTMLElement;
     private updateCount: number;
     // private settings: VisualSettings;
     private textNode: Text;
     private visualHost: IVisualHost;
     constructor(options: VisualConstructorOptions) {
-        debugger;
         this.visualHost = options.host;
         console.log('Visual constructor', options);
         this.target = options.element;
-        this.updateCount = 0;
-        if (typeof document !== "undefined") {
-            const new_p: HTMLElement = document.createElement("p");
-            new_p.appendChild(document.createTextNode("Update count:"));
-            const new_em: HTMLElement = document.createElement("em");
-            this.textNode = document.createTextNode(this.updateCount.toString());
-            new_em.appendChild(this.textNode);
-            new_p.appendChild(new_em);
-            this.target.appendChild(new_p);
-        }
     }
 
     public update(options: VisualUpdateOptions) {
-        debugger;
-        console.log(options.dataViews[0]);
-        
+        console.log("update");
+        let text = document.createElement("p");
+        text.textContent = "IT IS THE VISUAL IN MODERN MODULE STYLE";
+        this.target.appendChild(text);
     }
-
-    // private static parseSettings(dataView: DataView): VisualSettings {
-    //     return VisualSettings.parse(dataView) as VisualSettings;
-    // }
-
-    /** 
-     * This function gets called for each of the objects defined in the capabilities files and allows you to select which of the 
-     * objects and properties you want to expose to the users in the property pane.
-     * 
-     */
     public enumerateObjectInstances(options: EnumerateVisualObjectInstancesOptions): VisualObjectInstance[] | VisualObjectInstanceEnumerationObject {
-        // let result = VisualSettings.enumerateObjectInstances(this.settings || VisualSettings.getDefault(), options) as VisualObjectInstanceEnumerationObject;
-
-        // result.instances && result.instances.forEach(instance => {
-        //     if (instance.objectName === "general") {
-        //         instance.properties["passwordField"] = Array((this.settings.general.passwordField || "").length + 1).join("*");
-        //         delete instance.properties["passwordFieldHidden"];
-        //     }
-        // });
-        // return result;
         return [];
     }
 }

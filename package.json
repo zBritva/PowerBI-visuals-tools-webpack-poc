@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "lodash": "^4.17.5",
+    "powerbi-customvisuals-webpack-plugin": "file:../PowerBICustomVisualsWebpackPlugin",
     "powerbi-visuals-utils-dataviewutils": "^1.2.0"
   }
 }

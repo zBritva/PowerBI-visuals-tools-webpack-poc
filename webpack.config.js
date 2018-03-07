@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 const _ = require('lodash');
-const PowerbiCustomVisualsWebpackPlugin = require('./plugins/pbiCustomVisualPlugin');
+const PowerBICustomVisualsWebpackPlugin = require('powerbi-customvisuals-webpack-plugin');
 const WatchIgnorePlugin = require("webpack").WatchIgnorePlugin;
 const iconImage = ""; //TODO fix it
 const encoding = "utf8";
@@ -54,7 +54,7 @@ module.exports = {
         },
     },
     plugins: [
-        new PowerbiCustomVisualsWebpackPlugin({
+        new PowerBICustomVisualsWebpackPlugin({
             visual: {
                 name: pbivizFile.visual.name,
                 displayName: pbivizFile.visual.displayName,
