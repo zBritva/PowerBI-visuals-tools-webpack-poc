@@ -10,7 +10,10 @@ const encoding = "utf8";
 const stringResourcesPath = path.join("stringResources", "en-US", "resources.json");
 const capabilitiesPath = "./capabilities.json";
 const pbivizPath = "./pbiviz.json";
-const pbivizFile = require(path.join(__dirname,pbivizPath));
+const pbivizFile = require(path.join(__dirname, pbivizPath));
+
+const capabliliesPath = "./capabilities.json";
+const capabliliesFile = require(path.join(__dirname, capabliliesPath));
 
 module.exports = {
     entry: './src/external.ts',
@@ -56,6 +59,7 @@ module.exports = {
     plugins: [
         new PowerBICustomVisualsWebpackPlugin({
             ...pbivizFile,
+            capabilities: capabliliesFile,
             devMode: true
         }),
         // tool generates plugin, and it's leads to recursively reloading

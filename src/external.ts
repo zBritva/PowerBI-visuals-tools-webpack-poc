@@ -26,6 +26,8 @@
 "use strict";
 
 import powerbi from './../node_modules/poc-powerbi-visuals-api/PowerBI-visuals';
+
+import * as d3selection from 'd3-selection'
 // import * as settings from './settings';
 // import VisualSettings = settings.VisualSettings;
 
@@ -48,16 +50,47 @@ export default class VisualInExternalModule implements IVisual {
         this.visualHost = options.host;
         console.log('Visual constructor', options);
         this.target = options.element;
+
+        let div = document.createElement("div");
+        div.setAttribute("class", "main");
+        div.textContent = "IT IS THE VISUAL IN MODERN MODULE STYLE";
+        this.target.appendChild(div);
     }
 
     public update(options: VisualUpdateOptions) {
-        debugger;
-        
-
         console.log("update");
-        let text = document.createElement("p");
-        text.textContent = "IT IS THE VISUAL IN MODERN MODULE STYLE";
-        this.target.appendChild(text);
+       
+        if (
+            options.dataViews[0] &&
+            options.dataViews[0].categorical &&
+            options.dataViews[0].categorical.categories &&
+            options.dataViews[0].categorical.categories[0] &&
+            options.dataViews[0].categorical.categories[0].values
+        ) {
+            debugger;
+            let categories = options.dataViews[0].categorical.categories[0].values;
+
+            var paragraph = 
+                d3selection
+                .select("div.main")
+                .selectAll("p");
+
+            let data = 
+                paragraph
+                .data(categories);
+
+            let entering = 
+                data
+                .enter();
+
+            let p = entering
+                .append("p")
+                
+            p.text(d => d.toString());
+
+
+            data.exit().remove();
+        }
     }
     public enumerateObjectInstances(options: EnumerateVisualObjectInstancesOptions): VisualObjectInstance[] | VisualObjectInstanceEnumerationObject {
         return [];

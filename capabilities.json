@@ -3,7 +3,7 @@
         {
             "displayName": "Category Data",
             "name": "category",
-            "kind": "Measure"
+            "kind": "Grouping"
         },
         {
             "displayName": "Measure Data",
@@ -82,10 +82,19 @@
     },
     "dataViewMappings": [
         {
-            "table": {
-                "rows": {
+            "categorical": {
+                "categories": {
+                    "select": [
+                        {
+                            "bind": {
+                                "to": "category"
+                            }
+                        }
+                    ]
+                },
+                "values": {
                     "for": {
-                        "in": "measue"
+                        "in": "measure"
                     }
                 }
             }
