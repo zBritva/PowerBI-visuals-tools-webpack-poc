@@ -58,15 +58,18 @@ module powerbi.extensibility.visual {
         constructor(options: VisualConstructorOptions) {
             this.visualHost = options.host;
             console.log('Visual constructor', options);
+
+            this.target = options.element;
         }
 
         public update(options: VisualUpdateOptions) {
             console.log("update");
+            let text = document.createElement("p");
+            text.textContent = "IT IS THE VISUAL IN OLD MODULE STYLE";
+            this.target.appendChild(text);
         }
         public enumerateObjectInstances(options: EnumerateVisualObjectInstancesOptions): VisualObjectInstance[] | VisualObjectInstanceEnumerationObject {
             return [];
         }
     }
 }
-
-export default powerbi.extensibility.visual;

@@ -38,7 +38,7 @@ import DataView = powerbi.DataView;
 import EnumerateVisualObjectInstancesOptions = powerbi.EnumerateVisualObjectInstancesOptions;
 import VisualObjectInstanceEnumerationObject = powerbi.VisualObjectInstanceEnumerationObject;
 
-export default class VisualInInternalModule implements IVisual {
+export default class VisualInExternalModule implements IVisual {
     private target: HTMLElement;
     private updateCount: number;
     // private settings: VisualSettings;
@@ -51,6 +51,9 @@ export default class VisualInInternalModule implements IVisual {
     }
 
     public update(options: VisualUpdateOptions) {
+        debugger;
+        
+
         console.log("update");
         let text = document.createElement("p");
         text.textContent = "IT IS THE VISUAL IN MODERN MODULE STYLE";

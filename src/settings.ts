@@ -30,3 +30,5 @@ module powerbi.extensibility.visual {
 
     }
 }
+
+export default powerbi;

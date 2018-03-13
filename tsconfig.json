@@ -2,7 +2,7 @@
     "compilerOptions": {
         "outDir": "build",
         "noImplicitAny": true,
-        "sourceMap": false,
+        "sourceMap": true,
         "module": "esnext",
         "moduleResolution": "node",
         "target": "es5",
@@ -13,6 +13,8 @@
         "node_modules"
     ],
     "files": [
+        ".api/v1.6.0/PowerBI-visuals.d.ts",
+        "node_modules/powerbi-visuals-utils-dataviewutils/lib/index.d.ts",
         "src/external.ts"
     ]
 }

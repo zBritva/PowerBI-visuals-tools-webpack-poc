@@ -10,10 +10,10 @@ const encoding = "utf8";
 const stringResourcesPath = path.join("stringResources", "en-US", "resources.json");
 const capabilitiesPath = "./capabilities.json";
 const pbivizPath = "./pbiviz.json";
-const pbivizFile = require(pbivizPath);
+const pbivizFile = require(path.join(__dirname,pbivizPath));
 
 module.exports = {
-    entry: './src/visual.ts',
+    entry: './src/external.ts',
     devtool: 'source-map',
     mode: "development",
     module: {
@@ -29,7 +29,7 @@ module.exports = {
         extensions: [ '.tsx', '.ts', '.js' ]
     },
     output: {
-        path: path.join(__dirname, "/build"),
+        path: path.join(__dirname, "/.tmp/drop"),
         publicPath: 'assets',
         filename: "visual.js",
         libraryTarget: 'var',
@@ -38,7 +38,7 @@ module.exports = {
     devServer: {
         // logLevel: "SILENT",
         disableHostCheck: true,
-        contentBase: path.join(__dirname, "build"),
+        contentBase: path.join(__dirname, ".tmp/drop"),
         compress: true,
         port: 8080,
         hot: false,
@@ -55,22 +55,8 @@ module.exports = {
     },
     plugins: [
         new PowerBICustomVisualsWebpackPlugin({
-            visual: {
-                name: pbivizFile.visual.name,
-                displayName: pbivizFile.visual.displayName,
-                guid: pbivizFile.visual.guid,
-                visualClassName: pbivizFile.visual.visualClassName,
-                version: pbivizFile.visual.version,
-                description: pbivizFile.visual.description,
-                supportUrl: pbivizFile.visual.supportUrl,
-                author: pbivizFile.visual.author
-            },
-            apiVersion: pbivizFile.apiVersion,
-            style: "style/visual.less",
-            stringResources: [
-                require("./" + stringResourcesPath)
-            ],
-            capabilities: require(capabilitiesPath)
+            ...pbivizFile,
+            devMode: true
         }),
         // tool generates plugin, and it's leads to recursively reloading
         new WatchIgnorePlugin([
