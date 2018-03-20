@@ -1,9 +1,9 @@
 const path = require('path');
 const fs = require('fs');
 const _ = require('lodash');
+const base64Img = require('image-to-base64');
 const PowerBICustomVisualsWebpackPlugin = require('powerbi-customvisuals-webpack-plugin');
 const WatchIgnorePlugin = require("webpack").WatchIgnorePlugin;
-const iconImage = ""; //TODO fix it
 const encoding = "utf8";
 
 //TODO get from pbiviz json
@@ -12,11 +12,13 @@ const capabilitiesPath = "./capabilities.json";
 const pbivizPath = "./pbiviz.json";
 const pbivizFile = require(path.join(__dirname, pbivizPath));
 
+const stringResources = JSON.parse(fs.readFileSync(stringResourcesPath, encoding));
+
 const capabliliesPath = "./capabilities.json";
 const capabliliesFile = require(path.join(__dirname, capabliliesPath));
 
 module.exports = {
-    entry: './src/external.ts',
+    entry: './src/internal.ts',
     devtool: 'source-map',
     mode: "development",
     module: {
@@ -60,7 +62,11 @@ module.exports = {
         new PowerBICustomVisualsWebpackPlugin({
             ...pbivizFile,
             capabilities: capabliliesFile,
-            devMode: true
+            packageOutPath: path.join(__dirname, "distr"),
+            devMode: true,
+            stringResources: {
+                "en-US": {}
+            }
         }),
         // tool generates plugin, and it's leads to recursively reloading
         new WatchIgnorePlugin([

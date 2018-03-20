@@ -1,11 +1,11 @@
 {
     "visual": {
-      "name": "SankeyDiagram",
-      "displayName": "Sankey 1.7.1",
-      "guid": "SankeyDiagram1446463184954",
+      "name": "WebPackSampleVisual",
+      "displayName": "WebPackSampleVisual 0.0.1",
+      "guid": "WebPackSampleVisual_230529348",
       "visualClassName": "VisualInInternalModule",
-      "version": "1.7.1",
-      "description": "Sankey is a type of flow diagram in which the width of the series is in proportion to the quantity of the flow.  Use it to find major contributions to an overall flow.",
+      "version": "0.0.1",
+      "description": "WebPackSampleVisual is a sample visual for testing modern features of JS and TS",
       "supportUrl": "http://community.powerbi.com",
       "gitHubUrl": "https://github.com/Microsoft/powerbi-visuals-sankey"
     },
@@ -22,4 +22,4 @@
     "style": "style/visual.less",
     "capabilities": "capabilities.json",
     "dependencies": "dependencies.json"
-  }
+}
